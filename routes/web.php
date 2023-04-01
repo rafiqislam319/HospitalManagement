@@ -15,15 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'redirects']);
 
 
 
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware([
     'auth:sanctum',
