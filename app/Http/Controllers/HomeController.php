@@ -13,7 +13,7 @@ class HomeController extends Controller
             if (Auth::user()->usertype == 0) {
                 return view('frontend.home.home');
             } else {
-                return view('admin.admin.dashboard');
+                return view('admin.admin.home');
             }
         } else {
             return redirect()->back();
