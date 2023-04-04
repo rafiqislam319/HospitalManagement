@@ -10,15 +10,15 @@
                         @csrf
                         <div class="mb-3">
                             <label for="doctor-name" class="form-label">Doctor Name</label>
-                            <input type="text" name="name" class="form-control" id="doctor-name" placeholder="Enter doctor name">
+                            <input type="text" name="name" class="form-control" id="doctor-name" placeholder="Enter doctor name" required>
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" name="phone" class="form-control" id="phone" placeholder="Enter phone number">
+                            <input type="tel" name="phone" class="form-control" id="phone" placeholder="Enter phone number" required>
                         </div>
                         <div class="mb-3">
                             <label for="speciality" class="form-label">Speciality</label>
-                            <select class="form-select" name="speciality" id="speciality">
+                            <select class="form-select" name="speciality" id="speciality" required>
                                 <option selected disabled>Select a speciality</option>
                                 <option value="family_physician">Family Physician</option>
                                 <option value="cardiologist">Cardiologist</option>
@@ -27,11 +27,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="room-no" class="form-label">Room No</label>
-                            <input type="text" name="room" class="form-control" id="room-no" placeholder="Enter room number">
+                            <input type="text" name="room" class="form-control" id="room-no" placeholder="Enter room number" required>
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Image</label>
-                            <input type="file" name="file" class="form-control" id="image">
+                            <input type="file" name="file" class="form-control" id="image" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>

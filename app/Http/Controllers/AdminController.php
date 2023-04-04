@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -24,6 +25,7 @@ class AdminController extends Controller
         ]);
 
         $doctor = new Doctor();
+        $doctors = '';
 
         // Upload image
 
@@ -38,9 +40,13 @@ class AdminController extends Controller
         $doctor->speciality = $validatedData['speciality'];
         $doctor->room = $validatedData['room'];
         $doctor->save();
+        if ($doctor->save()) {
+            Alert::success('successfull', 'Doctor save Successfully');
+            return redirect()->back();
+        }
 
 
-        return redirect()->back();
+        //return redirect()->back();
 
         // Redirect to doctors page
         //return redirect()->with('success', 'Doctor created successfully.');
