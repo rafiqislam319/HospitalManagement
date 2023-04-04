@@ -23,7 +23,7 @@
             </li>
 
             <li class="nav-item menu-items">
-                <a class="nav-link" data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
+                <a class="nav-link" href="{{ url('add/doctor') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-chart-bar"></i>
                     </span>
