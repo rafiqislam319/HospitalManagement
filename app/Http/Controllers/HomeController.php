@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         if (Auth::id()) {
             if (Auth::user()->usertype == 0) {
-                $doctors = Doctor::all();
+                $doctors = $this->doctorData();
                 return view('frontend.home.home', compact('doctors'));
             } else {
                 return view('admin.admin.home');
@@ -24,12 +24,18 @@ class HomeController extends Controller
 
     public function index()
     {
-        if(Auth::id()){
+
+        if (Auth::id()) {
             return redirect('home');
-        }else{
-            $doctors = Doctor::all();
+        } else {
+            $doctors = $this->doctorData();
             return view('frontend.home.home', compact('doctors'));
         }
-        
+    }
+
+    //has used to reduce the redundancy of the code
+    private function doctorData()
+    {
+        return Doctor::all();
     }
 }
