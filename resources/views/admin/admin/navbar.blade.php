@@ -5,7 +5,7 @@
 
         <ul class="nav">
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('redirects') }}">
+                <a class="nav-link" href="{{ url('home') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-speedometer"></i>
                     </span>
