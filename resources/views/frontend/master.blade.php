@@ -49,6 +49,13 @@
     <script src="../assets/vendor/wow/wow.min.js"></script>
 
     <script src="../assets/js/theme.js"></script>
+    <script>
+        // Check if the URL contains a fragment identifier named 'form'
+        if (window.location.hash === '#form') {
+            // Scroll to the form element
+            document.querySelector('#appointment-form').scrollIntoView();
+        }
+    </script>
 
 </body>
 

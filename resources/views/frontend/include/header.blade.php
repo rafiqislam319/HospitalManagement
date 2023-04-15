@@ -57,10 +57,15 @@
                     </li>
 
 
-
+                    @if (Route::has('login'))
 
 
                     @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('myappointment') }}">My Appointment</a>
+                    </li>
+
+
                     <!-- User menu goes here -->
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -87,6 +92,7 @@
                         <a class="btn btn-primary ml-lg-3" href="{{ route('register') }}">Register</a>
                     </li>
                     @endauth
+                    @endif
 
 
 

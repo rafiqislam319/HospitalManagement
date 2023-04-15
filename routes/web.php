@@ -22,6 +22,11 @@ Route::get('/home', [HomeController::class, 'redirects']);
 Route::get('add/doctor', [AdminController::class, 'addDoctor']);
 Route::post('save/doctor', [AdminController::class, 'saveDoctor']);
 
+//appointment
+Route::post('appointment', [HomeController::class, 'appointment']);
+Route::get('myappointment', [HomeController::class, 'myappointment']);
+Route::get('cancel/appointment/{id}', [HomeController::class, 'cancelappointment']);
+
 
 
 
