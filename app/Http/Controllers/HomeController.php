@@ -67,30 +67,30 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'Appointment has created successfully, we will contact you soon mann');
     }
 
-    public function myappointment(){
+    public function myappointment()
+    {
 
-        if(Auth::id()){
+        if (Auth::id()) {
 
-                $userId = Auth::id();
-                $appointInfos = Appointment::where('user_id', $userId)->get();
+            $userId = Auth::id();
+            $appointInfos = Appointment::where('user_id', $userId)->get();
             return view('frontend.home.appointment', compact('appointInfos'));
-
-        }else{
+        } else {
             return redirect()->back();
         }
-
-        
     }
 
-    public function cancelappointment($id){
-
+    public function cancelappointment($id)
+    {
         $appointment = Appointment::find($id);
-        if($appointment->delete()){
-        return redirect()->back()->with('message', 'Appointment deleted successfully');
-        }else{
-            return redirect()->back();
+        if ($appointment) {
+            if ($appointment->delete()) {
+                return redirect()->back()->with('message', 'Appointment deleted successfully');
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect()->back()->with('message', 'Appointment not found');
         }
-
-
     }
 }

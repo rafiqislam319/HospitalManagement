@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -50,5 +51,27 @@ class AdminController extends Controller
 
         // Redirect to doctors page
         //return redirect()->with('success', 'Doctor created successfully.');
+    }
+
+    public function viewappointment()
+    {
+        $appointmets = Appointment::all();
+        return view('admin.admin.appointment', compact('appointmets'));
+    }
+
+    public function approveAppointment($id)
+    {
+        $appointmet = Appointment::find($id);
+        $appointmet->status = 'Approved';
+        $appointmet->save();
+        return redirect()->back();
+    }
+
+    public function cancelAppointment($id)
+    {
+        $appointmet = Appointment::find($id);
+        $appointmet->status = 'Cancel';
+        $appointmet->save();
+        return redirect()->back();
     }
 }

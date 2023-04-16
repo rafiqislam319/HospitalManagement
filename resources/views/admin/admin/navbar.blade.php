@@ -32,11 +32,11 @@
             </li>
 
             <li class="nav-item menu-items">
-                <a class="nav-link" href="{{ url('view/reservation') }}">
+                <a class="nav-link" href="{{ url('view/appointment') }}">
                     <span class="menu-icon">
                         <i class="mdi mdi-file-document-box"></i>
                     </span>
-                    <span class="menu-title">Reservations</span>
+                    <span class="menu-title">Appointment</span>
                 </a>
             </li>
             <li class="nav-item menu-items">
