@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Symfony\Component\CssSelector\Node\Specificity;
 
 class AdminController extends Controller
 {
@@ -72,6 +73,78 @@ class AdminController extends Controller
         $appointmet = Appointment::find($id);
         $appointmet->status = 'Cancel';
         $appointmet->save();
+        return redirect()->back();
+    }
+
+    public function showDoctors()
+    {
+        $doctors = Doctor::all();
+        return view('admin.admin.doctors', compact('doctors'));
+    }
+
+
+    public function deleteDoctor($id)
+    {
+        $doctor = Doctor::find($id);
+        $doctor->delete();
+        return redirect()->back();
+    }
+
+
+    public function updateDoctor($id)
+    {
+        $doctor = Doctor::find($id);
+
+        // $specialities = ['family_physician', 'cardiologist', 'medicine']; //manually data set
+
+        // Dynamically Retrieve all the distinct specialities from the Doctor model's specialities column.
+        $specialities = Doctor::distinct()->pluck('speciality')->toArray();
+
+
+
+        //if i would have  comma separated value like ("cardiologist, medicine") then i had to do following code
+        // Split the speciality values into an array
+        // $specialities = explode(',', $doctor->speciality);
+
+        // Trim any whitespace from the array values
+        // $specialities = array_map('trim', $specialities);
+
+
+        return view('admin.admin.editDoctor', compact('doctor', 'specialities'));
+    }
+
+    public function updateDoctorData(Request $request, $id)
+    {
+        // Validate input
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'speciality' => 'required|string|max:255',
+            'room' => 'required|string|max:10',
+            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $doctor = Doctor::find($id);
+
+        // Update doctor
+        $doctor->name = $validatedData['name'];
+        $doctor->phone = $validatedData['phone'];
+        $doctor->speciality = $validatedData['speciality'];
+        $doctor->room = $validatedData['room'];
+
+        // Upload image if provided
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            if($image){
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $request->file->move('doctor_image', $imageName);
+            $doctor->image = $imageName;
+            }
+        }
+
+        $doctor->save();
+
+        Alert::success('successfull', 'Doctor updated Successfully');
         return redirect()->back();
     }
 }

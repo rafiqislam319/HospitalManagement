@@ -30,6 +30,14 @@
                     <span class="menu-title">Doctors</span>
                 </a>
             </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="{{ url('show/doctor') }}">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-chart-bar"></i>
+                    </span>
+                    <span class="menu-title">Doctor List</span>
+                </a>
+            </li>
 
             <li class="nav-item menu-items">
                 <a class="nav-link" href="{{ url('view/appointment') }}">
