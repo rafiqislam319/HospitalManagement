@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/home', [HomeController::class, 'redirects']);
+Route::get('/home', [HomeController::class, 'redirects'])->middleware('auth', 'verified');
 
 Route::get('add/doctor', [AdminController::class, 'addDoctor']);
 Route::post('save/doctor', [AdminController::class, 'saveDoctor']);
