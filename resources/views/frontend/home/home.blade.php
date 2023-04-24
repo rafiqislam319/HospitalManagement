@@ -49,7 +49,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 py-3 wow fadeInUp">
                     <h1>Welcome to Your Health <br> Center</h1>
-                    <p class="text-grey mb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore eaque porro consequatur ex aspernatur. Explicabo, excepturi accusantium! Placeat voluptates esse ut optio facilis!</p>
+                    <p class="text-grey mb-4">Welcome to E-Health, a hospital management website dedicated to improving patient care and streamlining healthcare operations.
+
+                        At E-Health, our mission is to provide hospitals and healthcare providers with a user-friendly platform that simplifies their day-to-day tasks and enhances the patient experience. We believe that every patient deserves high-quality care, and that healthcare providers should have the tools they need to provide that care efficiently and effectively!</p>
                     <a href="about.html" class="btn btn-primary">Learn More</a>
                 </div>
                 <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
@@ -71,7 +73,7 @@
             <div class="item">
                 <div class="card-doctor">
                     <div class="header">
-                        <img src="doctor_image/{{ $doctor->image }}" alt="">
+                        <img src="doctor_image/{{ $doctor->image }}" alt="" style="height: 300px !important;">
                         <div class="meta">
                             <a href="#"><span class="mai-call"></span></a>
                             <a href="#"><span class="mai-logo-whatsapp"></span></a>

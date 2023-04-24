@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Notifications\SendEmailNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 // use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Notification;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,8 +16,15 @@ class AdminController extends Controller
 {
     public function addDoctor()
     {
-        //return 1;
-        return view('admin.doctor.doctor');
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 1) {
+                return view('admin.doctor.doctor');
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect('login');
+        }
     }
     public function saveDoctor(Request $request)
     {
@@ -59,8 +67,16 @@ class AdminController extends Controller
 
     public function viewappointment()
     {
-        $appointmets = Appointment::all();
-        return view('admin.admin.appointment', compact('appointmets'));
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 1) {
+                $appointmets = Appointment::all();
+                return view('admin.admin.appointment', compact('appointmets'));
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect('login');
+        }
     }
 
     public function approveAppointment($id)
@@ -154,8 +170,16 @@ class AdminController extends Controller
 
     public function emailView($id)
     {
-        $data = Appointment::find($id);
-        return view('admin.admin.emailForm', compact('data'));
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 1) {
+                $data = Appointment::find($id);
+                return view('admin.admin.emailForm', compact('data'));
+            } else {
+                return redirect()->back();
+            }
+        } else {
+            return redirect('login');
+        }
     }
 
     public function sendEmail(Request $request, $id)

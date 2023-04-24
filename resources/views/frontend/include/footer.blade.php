@@ -29,9 +29,9 @@
             </div>
             <div class="col-sm-6 col-lg-3 py-3">
                 <h5>Contact</h5>
-                <p class="footer-link mt-2">351 Willow Street Franklin, MA 02038</p>
-                <a href="#" class="footer-link">701-573-7582</a>
-                <a href="#" class="footer-link">healthcare@temporary.net</a>
+                <p class="footer-link mt-2">Dhaka</p>
+                <a href="#" class="footer-link">+88 01686313821</a>
+                <a href="#" class="footer-link">rafiqislam319@gmail.com</a>
 
                 <h5 class="mt-3">Social Media</h5>
                 <div class="footer-sosmed mt-3">
@@ -39,13 +39,13 @@
                     <a href="#" target="_blank"><span class="mai-logo-twitter"></span></a>
                     <a href="#" target="_blank"><span class="mai-logo-google-plus-g"></span></a>
                     <a href="#" target="_blank"><span class="mai-logo-instagram"></span></a>
-                    <a href="#" target="_blank"><span class="mai-logo-linkedin"></span></a>
+                    <a href="https://www.linkedin.com/in//rafiqislam319" target="_blank"><span class="mai-logo-linkedin"></span></a>
                 </div>
             </div>
         </div>
 
         <hr>
 
-        <p id="copyright">Copyright &copy; 2020 <a href="https://macodeid.com/" target="_blank">MACode ID</a>. All right reserved</p>
+        <p id="copyright">Copyright &copy; 2023 <a href="https://github.com/rafiqislam319/HospitalManagement" target="_blank">E-Health</a>. All right reserved</p>
     </div>
 </footer>
