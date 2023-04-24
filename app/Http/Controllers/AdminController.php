@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Notifications\SendEmailNotification;
 use Illuminate\Http\Request;
+// use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Notification;
 use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\CssSelector\Node\Specificity;
 
@@ -135,16 +138,38 @@ class AdminController extends Controller
         // Upload image if provided
         if ($request->hasFile('file')) {
             $image = $request->file('file');
-            if($image){
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $request->file->move('doctor_image', $imageName);
-            $doctor->image = $imageName;
+            if ($image) {
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $request->file->move('doctor_image', $imageName);
+                $doctor->image = $imageName;
             }
         }
 
         $doctor->save();
 
         Alert::success('successfull', 'Doctor updated Successfully');
+        return redirect()->back();
+    }
+
+
+    public function emailView($id)
+    {
+        $data = Appointment::find($id);
+        return view('admin.admin.emailForm', compact('data'));
+    }
+
+    public function sendEmail(Request $request, $id)
+    {
+        $data = Appointment::find($id);
+        $details = [
+            'greeting' => $request->greeting,
+            'body' => $request->body,
+            'actiontext' => $request->actiontext,
+            'actionurl' => $request->actionurl,
+            'endpart' => $request->endpart
+        ];
+        Notification::send($data, new SendEmailNotification($details));
+        Alert::success('successfull', 'Email Send Successfully');
         return redirect()->back();
     }
 }

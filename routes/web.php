@@ -40,6 +40,10 @@ Route::get('update/doctor/{id}', [AdminController::class, 'updateDoctor']);
 // Route::post('update/doctor/data/{id}', [AdminController::class, 'updateDoctorData']);
 Route::post('update/doctor/data/{id}', [AdminController::class, 'updateDoctorData'])->name('update.doctor.data');
 
+//Email Notification
+Route::get('email/view/{id}', [AdminController::class, 'emailView']);
+Route::post('sendEmail/{id}', [AdminController::class, 'sendEmail']);
+
 
 
 

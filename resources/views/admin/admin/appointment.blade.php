@@ -20,6 +20,7 @@
                                     <th>Message</th>
                                     <th>Status</th>
                                     <th>Actions</th>
+                                    <th>Send Mail</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,6 +43,7 @@
                                         <div class="d-flex justify-content-center">
                                             <a href="{{ url('appointment/approve', $appointmet->id) }}" class="badge bg-success" disabled>Approve</a>
                                             <a href="{{ url('appointment/cancel', $appointmet->id) }}" class="badge bg-danger ml-2">Cancel</a>
+                                            <a href="{{ url('email/view', $appointmet->id) }}" class="badge bg-warning ml-2">Send Mail</a>
                                         </div>
                                     </td>
                                 </tr>
